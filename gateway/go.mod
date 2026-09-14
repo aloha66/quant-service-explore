@@ -1,0 +1,20 @@
+module github.com/aloha66/quant-service/gateway
+
+go 1.27.1
+
+require (
+	github.com/aloha66/quant-service/gen/go v0.0.0
+	github.com/grpc-ecosystem/grpc-gateway/v2 v2.30.0
+	google.golang.org/grpc v1.83.2
+)
+
+require (
+	golang.org/x/net v0.59.0 // indirect
+	golang.org/x/sys v0.48.0 // indirect
+	golang.org/x/text v0.42.0 // indirect
+	google.golang.org/genproto/googleapis/api v0.0.0-20260911204522-f61a6ca850bd // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260911204522-f61a6ca850bd // indirect
+	google.golang.org/protobuf v1.36.12 // indirect
+)
+
+replace github.com/aloha66/quant-service/gen/go => ../gen/go
