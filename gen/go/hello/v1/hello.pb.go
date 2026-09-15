@@ -69,6 +69,7 @@ func (x *SayHelloRequest) GetName() string {
 type SayHelloResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Message       string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	RequestId     string                 `protobuf:"bytes,2,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -110,17 +111,26 @@ func (x *SayHelloResponse) GetMessage() string {
 	return ""
 }
 
+func (x *SayHelloResponse) GetRequestId() string {
+	if x != nil {
+		return x.RequestId
+	}
+	return ""
+}
+
 var File_hello_v1_hello_proto protoreflect.FileDescriptor
 
 const file_hello_v1_hello_proto_rawDesc = "" +
 	"\n" +
 	"\x14hello/v1/hello.proto\x12\bhello.v1\x1a\x1cgoogle/api/annotations.proto\"%\n" +
 	"\x0fSayHelloRequest\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\",\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\"K\n" +
 	"\x10SayHelloResponse\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage2d\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage\x12\x1d\n" +
+	"\n" +
+	"request_id\x18\x02 \x01(\tR\trequestId2d\n" +
 	"\fHelloService\x12T\n" +
-	"\bSayHello\x12\x19.hello.v1.SayHelloRequest\x1a\x1a.hello.v1.SayHelloResponse\"\x11\x82\xd3\xe4\x93\x02\v\x12\t/v1/helloB2Z0github.com/aloha66/quant-service/api/hello/v1;v1b\x06proto3"
+	"\bSayHello\x12\x19.hello.v1.SayHelloRequest\x1a\x1a.hello.v1.SayHelloResponse\"\x11\x82\xd3\xe4\x93\x02\v\x12\t/v1/helloB5Z3github.com/aloha66/quant-service/gen/go/hello/v1;v1b\x06proto3"
 
 var (
 	file_hello_v1_hello_proto_rawDescOnce sync.Once

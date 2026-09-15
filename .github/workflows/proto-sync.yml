@@ -1,0 +1,62 @@
+name: Proto Sync Check
+
+on:
+  pull_request:
+  push:
+    branches: [ main, master ]
+
+permissions:
+  contents: read
+
+jobs:
+  proto-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.13'
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v10.1.0
+        with:
+          version: '0.12.13'
+          enable-cache: true
+
+      - name: Install Go
+        uses: actions/setup-go@v7.0.0
+        with:
+          go-version-file: gateway/go.mod
+          cache-dependency-path: |
+            gateway/go.sum
+            gen/go/go.sum
+
+      - name: Install buf
+        uses: bufbuild/buf-action@v1.4.0
+        with:
+          version: '1.73.0'
+          setup_only: true
+          pr_comment: false
+
+      - name: Install locked Python dependencies
+        run: uv sync --frozen
+
+      - name: Validate proto contracts
+        run: buf lint
+
+      - name: Regenerate proto artifacts
+        run: |
+          make clean-proto
+          make proto
+
+      - name: Verify generated artifacts are committed
+        run: |
+          git diff --exit-code -- gen/python gen/openapi gen/go
+          test -z "$(git ls-files --others --exclude-standard -- gen)"
+
+      - name: Build gateway
+        run: make gateway-build
+
+      - name: Test Hello over HTTP and gRPC
+        run: uv run --locked python -m unittest discover -s tests -p 'test_*.py' -v

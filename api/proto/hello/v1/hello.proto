@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package hello.v1;
+
+import "google/api/annotations.proto";
+
+option go_package = "github.com/aloha66/quant-service/gen/go/hello/v1;v1";
+
+service HelloService {
+  rpc SayHello (SayHelloRequest) returns (SayHelloResponse) {
+    option (google.api.http) = {
+      get: "/v1/hello"
+    };
+  }
+}
+
+message SayHelloRequest {
+  string name = 1;
+}
+
+message SayHelloResponse {
+  string message = 1;
+  string request_id = 2;
+}

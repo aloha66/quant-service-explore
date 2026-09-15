@@ -44,6 +44,8 @@ components:
             properties:
                 message:
                     type: string
+                requestId:
+                    type: string
         Status:
             type: object
             properties:

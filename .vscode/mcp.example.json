@@ -1,0 +1,12 @@
+{
+  "servers": {
+    "postgres": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "postgresql://root:root@127.0.0.1:5432/quant"
+      ]
+    }
+  }
+}

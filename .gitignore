@@ -1,0 +1,16 @@
+.idea
+.venv
+
+postgres-data/
+postgres-data-18/
+.build/
+# Python 字节码编译文件
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+*.pyd
+
+# Apifox proto export workspace
+tmp/apifox-protos/
+.worktrees/
