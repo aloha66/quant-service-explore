@@ -21,32 +21,38 @@ class AppRuntime:
         self._settings = settings
         self._container: RuntimeContainer | None = None
 
-    def startup(self) -> RuntimeContainer:
+    async def startup(self) -> RuntimeContainer:
         if self._container is not None:
             return self._container
 
         dsn = self._settings.postgres.dsn
         engine = None
         session_maker = None
-        if dsn:
-            engine = create_async_engine(
-                dsn,
-                pool_size=self._settings.postgres.pool_size,
-                max_overflow=self._settings.postgres.max_overflow,
-                pool_pre_ping=True,
+        try:
+            if dsn:
+                engine = create_async_engine(
+                    dsn,
+                    pool_size=self._settings.postgres.pool_size,
+                    max_overflow=self._settings.postgres.max_overflow,
+                    pool_pre_ping=True,
+                )
+                session_maker = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
+
+            # Hello module injection
+            hello_usecase = HelloUsecase()
+            hello_service = create_hello_handler(hello_usecase)
+
+            self._container = RuntimeContainer(
+                settings=self._settings,
+                engine=engine,
+                session_factory=session_maker,
+                hello_service=hello_service,
             )
-            session_maker = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
-
-        # Hello module injection
-        hello_usecase = HelloUsecase()
-        hello_service = create_hello_handler(hello_usecase)
-
-        self._container = RuntimeContainer(
-            settings=self._settings,
-            engine=engine,
-            session_factory=session_maker,
-            hello_service=hello_service,
-        )
+        except BaseException:
+            # Failed assembly has no container yet; release already acquired resources.
+            if engine is not None:
+                await engine.dispose()
+            raise
         return self._container
 
     async def shutdown(self) -> None:

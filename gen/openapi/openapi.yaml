@@ -44,7 +44,7 @@ components:
             properties:
                 message:
                     type: string
-                requestId:
+                request_id:
                     type: string
         Status:
             type: object

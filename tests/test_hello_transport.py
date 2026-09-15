@@ -17,6 +17,7 @@ import urllib.parse
 import urllib.request
 
 import grpc
+import yaml
 
 from bootstrap import configure_import_paths
 
@@ -108,6 +109,17 @@ class TestHelloTransport(unittest.TestCase):
                     payload = json.load(response)
                     self.assertEqual(payload["message"], f"Hello, {name or 'World'}!")
                     self.assertTrue(payload["request_id"])
+
+    def test_openapi_response_fields_match_http_and_proto(self) -> None:
+        spec = yaml.safe_load((ROOT / "gen" / "openapi" / "openapi.yaml").read_text())
+        response = spec["paths"]["/v1/hello"]["get"]["responses"]["200"]
+        schema_ref = response["content"]["application/json"]["schema"]["$ref"]
+        schema_name = schema_ref.removeprefix("#/components/schemas/")
+        documented_fields = set(spec["components"]["schemas"][schema_name]["properties"])
+        proto_fields = {field.name for field in hello_pb2.SayHelloResponse.DESCRIPTOR.fields}
+        self.assertEqual(documented_fields, proto_fields)
+        with urllib.request.urlopen(self.http_url + "/v1/hello?name=Contract", timeout=5) as response:
+            self.assertEqual(set(json.load(response)), documented_fields)
 
     def test_concurrent_http_requests(self) -> None:
         def request(index: int) -> dict[str, str]:

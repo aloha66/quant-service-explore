@@ -26,3 +26,5 @@ plugins:
   - remote: buf.build/community/google-gnostic-openapi:v0.7.1
     revision: 1
     out: gen/openapi
+    opt:
+      - naming=proto

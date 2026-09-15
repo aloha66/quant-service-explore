@@ -45,6 +45,9 @@ class ErrorInterceptor(grpc.aio.ServerInterceptor):
                     return await original_behavior(request, context)
                 else:
                     return original_behavior(request, context)
+            except grpc.aio.AbortError:
+                # context.abort() 已完成协议终止，保留 gRPC 的控制流。
+                raise
             except AppError as e:
                 # 预期的业务错误，记录日志但不抛出完整 traceback
                 logger.warning("AppError [%s]: %s", e.reason, e.message)

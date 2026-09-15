@@ -55,6 +55,8 @@ UI 的 11 行、顺序、颜色、精度、小额阈值、时间、主副图 hov
 
 ## 5. 工程评估
 
+- [Kratos v3 官方依赖方向基线（2026-09-15）](2026-09-15-kratos-v3-official-baseline.md)：固定官方 release 与模板 commit，区分源码依赖、运行时调用和装配顺序，辨析官方约定与本项目政策。
+- [Kratos v3 清单对比与当前项目复审（2026-09-15）](2026-09-15-kratos-v3-architecture-audit.md)：保留初审依据；第 8 节记录 K01–K03 修复、五份现行文档同步、25 项测试及空目录生成验收，并说明尚无实现可验收的能力范围。
 - [Scaffold 审查与整改依据（2026-09-15）](2026-09-15-scaffold-review-remediation.md)：保存原暂存区 66 文件审查的全部问题、架构与文档建议、复现证据及验收清单，另列当前整改进展和获授权后的远程生成验证；后续整改与复审从此处开始。
 - [全部依赖升级至最新稳定版：影响评估（2026-09-14）](2026-09-14-dependency-upgrade-assessment.md)：Python 直接与传递依赖、Go gateway、Proto、开发工具、CI 和 PostgreSQL 的版本、兼容问题、实测结果与升级顺序。
 - [依赖升级与 Hello 联调验收（2026-09-15）](2026-09-15-dependency-upgrade-results.md)：实际升级版本、生成器锁定、空目录重建及 HTTP/gRPC 运行验收；Python 保持 3.13.3，PostgreSQL 仅修改配置。
