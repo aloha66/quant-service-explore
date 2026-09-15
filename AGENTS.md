@@ -84,3 +84,17 @@
 - 禁止在 `handler` / `service` / `usecase` 内部自行创建具体 repo/client
 - injector 可以调用 `data` 等外层的资源工厂；工厂负责具体初始化细节，injector 负责基础资源所有权和 cleanup，`cmd` 负责协调 server 停止与 injector 清理
 - 正常退出和部分初始化失败都必须释放已创建的资源；停止流程不得因一个资源关闭失败而跳过其余清理，需验证重复关闭或未完全启动时的处理
+
+## Agent skills
+
+### Issue tracker
+
+Issues are tracked in GitHub Issues for `aloha66/quant-service-explore` using the `gh` CLI. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Triage uses the default five-label vocabulary: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Domain documentation uses the single-context layout: root `CONTEXT.md` plus repo-wide ADRs under `docs/adr/`. See `docs/agents/domain.md`.
