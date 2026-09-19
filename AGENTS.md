@@ -87,6 +87,22 @@
 
 ## Agent skills
 
+### Impeccable 前端界面设计与审查
+
+当任务涉及前端界面或交互体验时，使用项目内 skill：`.agents/skills/impeccable/SKILL.md`。典型场景包括：
+
+- 新建或重设计网站、Landing Page、Dashboard、应用壳、组件、表单、设置页、Onboarding、空状态等 UI
+- 评审或改进现有 UI 的视觉层次、信息架构、可用性、认知负担、无障碍、响应式行为、主题、排版、间距、颜色与布局
+- 做 UI 技术质量审计，包括可访问性、性能、不同设备适配、错误状态、边界情况和国际化
+- 对已有界面进行 polish、bolder、quieter、distill、harden、clarify、animate、colorize、typeset、layout 或 optimize 等专项改进
+- 需要在浏览器中进行视觉迭代、生成界面变体，或让安全/单调的设计更有个性时
+
+该 skill 仅适用于 UI/UX 和视觉设计工作；纯后端、数据层、协议、脚本或非界面任务无需加载。使用前按 skill 中的 Setup 和命令路由执行，并在实际修改 UI 前读取其质量基线说明。
+
+### A 股数据获取
+
+当任务需要实际获取 A 股行情、K 线、财务、研报、公告、资金面、新闻、指数、交易日历或其他市场数据时，可使用项目内 skill：`.agents/skills/a-stock-data/SKILL.md`。使用前按需阅读对应数据端点和数据源说明；仅讨论 A 股概念、投资观点或策略而不需要调用数据接口时，无需加载该 skill。
+
 ### Issue tracker
 
 Issues are tracked in GitHub Issues for `aloha66/quant-service-explore` using the `gh` CLI. See `docs/agents/issue-tracker.md`.
