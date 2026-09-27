@@ -4,7 +4,11 @@ GO ?= go
 BUF ?= buf
 GEN_GO_MODULE := github.com/aloha66/quant-service/gen/go
 
-.PHONY: proto proto-buf proto-deps clean-proto gateway-run gateway-build
+.PHONY: proto proto-buf proto-deps clean-proto gateway-run gateway-build prototype-stock-research
+
+# Standalone, throwaway HTML; no service or database is required.
+prototype-stock-research:
+	python3 -m webbrowser "file://$(CURDIR)/docs/prototypes/stock-research-first/index.html"
 
 proto: proto-buf
 
