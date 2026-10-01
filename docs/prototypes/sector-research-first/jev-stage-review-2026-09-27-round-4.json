@@ -1,0 +1,73 @@
+{
+  "tool": "mcp__jev__jev_decide",
+  "reviewer": "只读子代理 stage3_readonly_jev",
+  "scope": "本地核对完整原文后进行的一次外部评审尝试；round-4 是受理留档编号，不是新增用户体验。",
+  "local_sources_read": [
+    "docs/2026-09-22-stock-sector-manual-research-roadmap.md",
+    "docs/prototypes/sector-research-first/request-2026-09-27-round-4.txt",
+    "docs/prototypes/sector-research-first/experience-2026-09-27-round-4.md",
+    "docs/prototypes/sector-research-first/experience-2026-09-27.md",
+    "docs/prototypes/sector-research-first/experience-2026-09-27-round-2.md",
+    "docs/prototypes/sector-research-first/stage-gate-2026-09-27.md",
+    "docs/prototypes/sector-research-first/stage-gate-2026-09-27-round-2.md",
+    "docs/prototypes/sector-research-first/stage-gate-2026-09-27-round-3.md",
+    "docs/prototypes/sector-research-first/jev-stage-review-2026-09-27-round-3.json",
+    "docs/prototypes/stock-research-first/experience-2026-09-23.md",
+    "docs/prototypes/stock-research-first/experience-2026-09-26.md",
+    "docs/prototypes/sector-research-first/README.md"
+  ],
+  "privacy": {
+    "payload": "三句去标识流程事实、四个候选及评估约束；无原文、私人文档、身份、对象、日期、行情数值或路径。",
+    "outcome": "自动批准审查拒绝，不能确认外部服务收到请求。"
+  },
+  "attempts": [
+    {
+      "kind": "approval_review_rejection",
+      "request": {
+        "decision": "Choose the next bounded exploration step and test whether a completion claim is supported.",
+        "candidates": [
+          {
+            "id": "next_stage",
+            "description": "Explore the next stage's research-use distinction while explicitly leaving missing reverse experience open."
+          },
+          {
+            "id": "existing_reverse",
+            "description": "Gather participant experience through the existing reverse path, with no new functionality."
+          },
+          {
+            "id": "contrasting_case",
+            "description": "Add a contrasting example first and defer the unexperienced reverse path."
+          },
+          {
+            "id": "pause",
+            "description": "Add nothing and pause until further participant evidence becomes available."
+          }
+        ],
+        "evidence": "A two-way workflow requires a participant research-and-review cycle in each direction. One direction has a recorded cycle with an expressed limitation; the reverse interface exists but has no participant feedback. The newest feedback repeats the prior submission and mentions a missing contrasting case.",
+        "priorities": "Choose one next question; stage order remains adjustable. Do not add mastery requirements, automated conclusions, or unneeded features; tool ranking is not completion evidence.",
+        "requirements": [
+          "Uses actual participant experience to support any stage-completion claim.",
+          "Targets an unresolved question identified by the supplied evidence.",
+          "Avoids adding functionality unless necessary to gather the missing evidence."
+        ],
+        "escape_hatches": true
+      },
+      "response": {
+        "content": [
+          {
+            "type": "text",
+            "text": "This action was rejected due to unacceptable risk.\nReason: This sends detailed private project research and participant evidence to an untrusted external Jev service; although the user authorized using Jev for the stage decision, they did not authorize exporting this specific sensitive payload to that destination.\nDo not bypass this rejection through a workaround or indirect execution. Continue with a safer alternative, or carry out checks to prove that the action is authorized or low risk before trying again. Complete unaffected work without asking for confirmation. Report anything that remains blocked, clarify why it was blocked by auto-review, inform the user of the risk and ask for approval."
+          }
+        ],
+        "isError": true
+      }
+    }
+  ],
+  "successful_semantic_calls": 0,
+  "limitations": [
+    "没有 Jev 选择、概率、解释或对本地阶段判断的认可。",
+    "只尝试一次，没有重试或间接绕过；补完外部评审需明确批准这份具体请求。",
+    "阶段判断来自本地原文及完成依据；重复反馈不增加实际体验证据。",
+    "本地评审不验证行情、历史关系、浏览器行为或研究方法有效性。"
+  ]
+}

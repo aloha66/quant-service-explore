@@ -1,0 +1,41 @@
+{
+  "tool": "mcp__jev__jev_decide",
+  "scope": "去标识最小流程事实；无体验原文、身份、对象、日期、行情或私有路径。",
+  "request": {
+    "decision": "Does the supplied participant workflow evidence justify starting one next-stage purpose-distinction experiment?",
+    "candidates": [
+      {
+        "id": "start_next",
+        "description": "Start one minimal experiment distinguishing further research from readiness to wait for a possible action, keeping unresolved interpretation questions open."
+      },
+      {
+        "id": "reuse_current",
+        "description": "Reuse the existing two-way workflow for one focused clarification without adding features."
+      },
+      {
+        "id": "defer",
+        "description": "Make no prototype change and defer a stage decision pending additional participant evidence."
+      }
+    ],
+    "evidence": "The completion criterion is a participant research-and-review cycle in each direction, an expressed use or limitation of related information, and traceable original and subsequent records for both objects. Previously only one direction had participant evidence. New feedback supplies the reverse cycle with separate saved judgments and later review, calls the related object another reference dimension, and identifies a dated difference. A change-selection conflicts with terse unchanged-sounding text. A quantity assertion lacks data, and the judgment-quality review is inconclusive. Both outcomes were already familiar; this is not an independent baseline.",
+    "priorities": "Assess process exploration only, not method effectiveness. Do not infer understanding from completed forms. Select one useful next question without requiring conceptual mastery. No automated conclusions or full management system. A model ranking is advisory, not completion evidence.",
+    "requirements": [
+      "Both workflow directions have actual participant research and review evidence.",
+      "The participant describes a use or limitation of related information.",
+      "Original and later records remain traceable without rewriting.",
+      "The next step tests one unresolved purpose distinction and preserves uncertainty."
+    ],
+    "escape_hatches": true
+  },
+  "status": "not_retried_pending_explicit_payload_approval",
+  "attempts_this_intake": 0,
+  "response_this_intake": null,
+  "successful_semantic_calls_this_intake": 0,
+  "previous_attempt_file": "jev-stage-review-2026-10-01-round-5.json",
+  "reason": "本次完整请求与 round-5 逐字相同，阶段事实及拟发送 request 未变化。先前自动批准审查拒绝这一摘要发往外部 Jev；本次尚未取得对具体 payload 和接收方的新增明确批准，因此未重复调用或绕过。",
+  "authorization_requested": "仅批准将本文件 request 的全部字段原样发给外部 Jev，使用 mcp__jev__jev_decide 一次；不发送本文件其余留档字段、体验原文、私有文档、身份、对象、日期、数值或路径。",
+  "limitations": [
+    "没有本次 Jev 判断或概率；不能把前次拒绝算作本次实际调用。",
+    "本地阶段复核独立完成；概率不能作为阶段完成证明。"
+  ]
+}
