@@ -1,0 +1,24 @@
+{
+  "tencent": {
+    "source_url": "https://st.gtimg.com/quotes/hs-fund/zxgweb-chart-5878585c4a61.js",
+    "fetched_at": "2026-10-03T04:48:26.027562+00:00",
+    "response_sha256": "01ed18a4939ad01195896ab3063d2fdbf6ae5adc69836d308aabb1be04aa8c08",
+    "raw_path": "data/raw/unit-tencent-01ed18a4939ad011.js",
+    "labels": {
+      "STOCK_UNIT.sh": "手",
+      "STOCK_UNIT.sz": "手"
+    },
+    "field_rule": "Official daily kline numeric parser retains original field[5] without unit conversion; STOCK_UNIT.sh/sz is 手."
+  },
+  "shenwan": {
+    "source_url": "https://www.swsresearch.com/institute_sw/p__allIndex__releasedIndex__releaseDetail__index.js",
+    "fetched_at": "2026-10-03T04:45:04.677630+00:00",
+    "response_sha256": "fc12a0a78c35fdd77051e0369a5dabee7fd4cac63e23acefb6ff59844566ea9d",
+    "raw_path": "data/raw/unit-shenwan-fc12a0a78c35fdd7.js",
+    "labels": {
+      "bargainamount": "亿股",
+      "bargainsum": "亿元"
+    },
+    "field_rule": "Official historical detailTrend maps bargainamount/bargainsum into tooltip positions 5/6, labelled 亿股/亿元."
+  }
+}
